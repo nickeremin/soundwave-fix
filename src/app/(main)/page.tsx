@@ -1,9 +1,6 @@
 import React from "react"
 import { type Metadata } from "next"
 
-import MainHeader from "@/widgets/layout/headers/main-header"
-
-
 export const metadata: Metadata = {
   title: "Home | Soundwave",
 }
@@ -11,21 +8,8 @@ export const metadata: Metadata = {
 function HomePage() {
   return (
     <div>
-      <MainHeader />
-      <div className="p-6">
-        {/* TODO: Recently played artists and playlists and albums */}
-        {/* <section className="flex flex-col gap-4">
-          <Link
-            href="/home/recently-played"
-            className="decoration-2 hover:underline"
-          >
-            <h2 className="text-2xl font-bold">Recently played</h2>
-          </Link>
-          <div>
-          </div>
-        </section> */}
-      
-      </div>
+      {/* <MainHeader /> */}
+      <div className="p-6"></div>
     </div>
   )
 }

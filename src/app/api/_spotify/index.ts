@@ -2,7 +2,6 @@ import { cookies } from "next/headers"
 import Axios, { type AxiosError, type AxiosRequestConfig } from "axios"
 
 import { env } from "@/shared/components/env.mjs"
-import { catchAxiosError } from "@/shared/lib/utils"
 
 export async function getSpotifyAccessToken() {
   const options: AxiosRequestConfig = {
@@ -30,7 +29,7 @@ export async function getSpotifyAccessToken() {
       cookieStore.set(env.SPOTIFY_ACCESS_TOKEN_KEY, token)
     }
   } catch (error) {
-    catchAxiosError(error)
+    console.log(error)
   }
 }
 
