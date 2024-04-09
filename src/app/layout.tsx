@@ -3,11 +3,7 @@ import { Nunito_Sans } from "next/font/google"
 
 import "./globals.css"
 
-import BoundStoreHydrationProvider from "@/providers/bound-store-hydration-provider"
-import { BoundStoreProvider } from "@/providers/bound-store-provider"
-
 import { cn } from "@/shared/lib/utils"
-import TRPCReactQueryProvider from "@/shared/trpc/trpc-react-query-provider"
 
 const font = Nunito_Sans({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -27,13 +23,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           "relative min-h-screen max-w-[100vw] antialiased"
         )}
       >
-        <TRPCReactQueryProvider>
-          <BoundStoreProvider>
-            <BoundStoreHydrationProvider>
-              {children}
-            </BoundStoreHydrationProvider>
-          </BoundStoreProvider>
-        </TRPCReactQueryProvider>
+        {children}
       </body>
     </html>
   )
