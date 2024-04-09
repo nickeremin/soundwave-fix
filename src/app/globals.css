@@ -2,32 +2,304 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /* System Colors */
+    --red-color: 255 69 58;
+    --orange-color: 255 159 10;
+    --yellow-color: 255 214 10;
+    --green-color: 48 209 88;
+    --mint-color: 99 230 226;
+    --cyan-color: 100 210 255;
+    --blue-color: 10 132 255;
+    --purple-color: 191 90 242;
+    --pink-color: 255 55 95;
+
+    /* System Gray Colors */
+    --gray-color-100: 250 250 255;
+    --gray-color-200: 205 205 210;
+    --gray-color-300: 150 150 155;
+    --gray-color-400: 75 75 80;
+    --gray-color-500: 45 45 50;
+    --gray-color-600: 30 30 35;
+    --gray-color-700: 10 10 15;
+    --gray-color-100-hsl: hsl(240, 33.3%, 97.1%);
+    --gray-color-200-hsl: hsl(240, 4.8%, 79.4%);
+    --gray-color-300-hsl: hsl(240, 2.3%, 57.8%);
+    --gray-color-400-hsl: hsl(240, 6.5%, 15.1%);
+    --gray-color-500-hsl: hsl(240, 10.2%, 9.6%);
+    --gray-color-600-hsl: hsl(240, 9.1%, 4.3%);
+    --background-hsl: hsl(0, 0%, 0%);
+    --gray-light: 250 250 255;
+    --gray-dark: 0 0 0;
+
+    /* Custom Colors */
+    --ds-background-100: 18 18 23;
+    --ds-background-200: 0 0 0;
+    --background-noise: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=");
+    --link-color: 41 151 255;
+    --focus-color: 82 168 255;
+    --blue-accent: 10 132 255;
+
+    /* Components Colors */
+    --background: 0 0 0;
+
+    --primary: var(--gray-color-100);
+    --primary-foreground: var(--gray-dark);
+
+    --secondary: var(--gray-color-200);
+    --tertiary: var(--gray-color-300);
+
+    --muted: var(--gray-color-600);
+    --muted-foreground: var(--gray-color-300);
+
+    --accent: var(--gray-color-500);
+    --accent-foreground: var(--gray-color-100);
+
+    --focus: var(--gray-color-400);
+
+    --destructive: var(--red-color);
+    --destructive-foreground: var(--gray-light);
+
+    --themed-border: hsl(0, 0%, 100%, 0.17);
+    --themed-border-hover: hsl(0, 0%, 100%, 0.2);
+    --themed-border-focus: hsl(0, 0%, 100%, 0.24);
+
+    --border: 51 51 51;
+    --ring: 82 168 255;
+
+    --radius: 0.5rem;
+
+    /* Sizes */
+    --content-page-width: 1200px;
+    --content-page-width-with-margin: 1248px;
+    --page-width: 1400px;
+    --page-width-with-margin: 1448px;
+
+    /* Style Variables */
+    --focus-ring: 0 0 0 2px rgb(var(--ds-background-100)),
+      0 0 0 4px rgb(var(--focus-color));
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border decoration-current decoration-[1.6px];
+    scrollbar-color: rgb(var(--focus)) transparent;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    @apply bg-background;
+  }
+
+  body {
+    @apply bg-background text-primary;
+  }
+
+  /* width */
+  /* ::-webkit-scrollbar {
+  
+    background-color: inherit;
+  } */
+
+  /* Track */
+  /* ::-webkit-scrollbar-track {
+    background: inherit;
+  } */
+
+  /* Handle */
+  /* ::-webkit-scrollbar-thumb {
+    background: #888;
+  } */
+
+  /* Handle on hover */
+  /* ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  } */
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .grid-area-1 {
+    grid-area: 1 / 1;
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      @apply px-4;
+    }
+  }
+
+  .underline-link {
+    @apply relative hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:right-0 hover:after:border-b hover:after:border-b-inherit hover:after:content-[''];
+  }
+
+  .link-hover {
+    @apply border-b border-b-transparent hover:border-b-current;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-b from-primary/85 to-primary bg-clip-text text-transparent;
+  }
+}
+
+@layer components {
+  /* Button */
+  [data-shadcnui-button="true"]:focus-visible {
+    transition: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  /* Input */
+  [data-shadcnui-input="true"]:disabled {
+    color: rgb(var(--muted-foreground));
+    background-color: rgb(var(--muted));
+    cursor: not-allowed;
+  }
+
+  [data-shadcnui-input-wrapper="true"] {
+    transition: all 0.15s ease-in-out;
+    box-shadow: 0 0 0 1px var(--themed-border);
+  }
+
+  [data-shadcnui-input-wrapper="true"]:hover {
+    box-shadow: 0 0 0 1px rgba(var(--tertiary));
+  }
+
+  [data-shadcnui-input-wrapper="true"]:focus-within {
+    box-shadow:
+      0 0 0 1px rgb(var(--tertiary)),
+      0 0 0 4px var(--themed-border-focus);
+  }
+
+  [data-shadcnui-input-wrapper="true"]:has(
+      [data-shadcnui-input="true"]:disabled
+    ) {
+    box-shadow: 0 0 0 1px var(--themed-border);
+  }
+
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  @media only screen and (max-device-width: 780px) and (-webkit-min-device-pixel-ratio: 0) {
+    input {
+      font-size: 16px !important;
+    }
+  }
+}
+
+/* Gradients */
+.animated-gradient-text-fade-blue {
+  animation: fade-text-blue 8s infinite;
+}
+
+.animated-gradient-text-fade-purple {
+  animation: fade-text-purple 8s infinite;
+}
+
+.animated-gradient-text-fade-orange {
+  animation: fade-text-orange 8s infinite;
+}
+
+.animated-gradient-text-fade-blue-reverse {
+  animation: fade-text-blue-reverse 8s infinite;
+}
+
+.animated-gradient-text-fade-purple-reverse {
+  animation: fade-text-purple-reverse 8s infinite;
+}
+
+.animated-gradient-text-fade-orange-reverse {
+  animation: fade-text-orange-reverse 8s infinite;
+}
+
+@keyframes fade-text-blue {
+  0%,
+  16.667%,
+  100% {
+    opacity: 1;
+  }
+
+  33.333%,
+  83.333% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-text-purple {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  33.333%,
+  50% {
+    opacity: 1;
+  }
+
+  16.667%,
+  66.667% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-text-orange {
+  0%,
+  50%,
+  100% {
+    opacity: 0;
+  }
+
+  66.667%,
+  83.333% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-text-blue-reverse {
+  0%,
+  16.667%,
+  100% {
+    opacity: 0;
+  }
+
+  33.333%,
+  83.333% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-text-purple-reverse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  33.333%,
+  50% {
+    opacity: 0;
+  }
+
+  16.667%,
+  66.667% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-text-orange-reverse {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  66.667%,
+  83.333% {
+    opacity: 0;
   }
 }
