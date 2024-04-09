@@ -2,7 +2,7 @@ import React from "react"
 import { type Metadata } from "next"
 
 import MainHeader from "@/widgets/layout/headers/main-header"
-import RecommendedPlaylists from "@/widgets/playlist/recommended-playlists"
+
 
 export const metadata: Metadata = {
   title: "Home | Soundwave",
@@ -24,7 +24,7 @@ function HomePage() {
           <div>
           </div>
         </section> */}
-        <RecommendedPlaylists />
+      
       </div>
     </div>
   )
