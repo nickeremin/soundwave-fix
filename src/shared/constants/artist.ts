@@ -1,4 +1,4 @@
-import { DiscographyFilterType, type DiscographyFilter } from "../types/artist"
+import type { DiscographyFilterType, DiscographyFilter } from "../types/artist"
 
 export const discographyFilterTypes: DiscographyFilterType[] = [
   "all",

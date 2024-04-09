@@ -2,10 +2,8 @@
 
 import React from "react"
 import { useLayoutStore } from "@/providers/bound-store-provider"
-import LibraryContextProvider from "@/providers/library-context-provider"
 
 import MainNav from "@/widgets/layout/main-nav"
-import UserLibrary from "@/widgets/library/user-library"
 import { ScrollArea } from "@/shared/components/ui/scroll-area"
 import { useColumnsCount } from "@/shared/lib/hooks/use-columns-count"
 
@@ -43,9 +41,7 @@ function MainLayout({ children }: MainLayoutProps) {
           className="flex flex-col gap-2"
         >
           <MainNav />
-          <LibraryContextProvider>
-            <UserLibrary />
-          </LibraryContextProvider>
+          
         </aside>
         <div className="overflow-hidden rounded-lg bg-background-100">
           <ScrollArea
