@@ -1,8 +1,6 @@
 import { NextRequest } from "next/server"
-import { getAuth } from "@clerk/nextjs/server"
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch"
 
-import { createContextInner } from "@/shared/trpc/context"
 import { appRouter } from "@/app/api/trpc/app"
 
 function handler(req: NextRequest) {
@@ -10,13 +8,7 @@ function handler(req: NextRequest) {
     endpoint: "/api/trpc",
     req,
     router: appRouter,
-    createContext() {
-      const auth = getAuth(req)
-      return createContextInner({
-        auth,
-        req,
-      })
-    },
+    createContext: () => ({}),
     onError({ error }) {
       if (error.code === "INTERNAL_SERVER_ERROR") {
         console.error("Caught TRPC error:", error)
