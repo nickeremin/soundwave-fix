@@ -8,8 +8,6 @@ import { twMerge } from "tailwind-merge"
 import { v4 } from "uuid"
 import * as z from "zod"
 
-import { type ImageObject } from "../types/image"
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -53,10 +51,6 @@ export function formatAlbumDuration(duration: number) {
   }
 }
 
-export function getImageUrl(images: ImageObject[] | undefined) {
-  const image = images?.[0]
-  return image?.url
-}
 
 export function getAverageColor(image: HTMLImageElement) {
   const fac = new FastAverageColor()
